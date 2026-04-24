@@ -5,7 +5,7 @@ $con = connection();
 
 $id=$_GET["id"];
 
-$sql="DELETE FROM users WHERE id='$id'";
+$sql="DELETE FROM clientes WHERE id_cliente='$id'";
 $query = mysqli_query($con, $sql);
 
 if($query){

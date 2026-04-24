@@ -2,7 +2,7 @@
     include("connection.php");
     $con=connection();
 
-    $id=$_GET['id'];
+    $id=$_GET['id_cliente'];
 
     $sql="SELECT * FROM clientes WHERE id_cliente='$id'";
     $query=mysqli_query($con, $sql);

@@ -4,7 +4,7 @@ function connection(){
     $host = "localhost";
     $user = "root";
     $pass = "";
-    //hola
+    
     $bd = "electronica";
 
     $connect=mysqli_connect($host, $user, $pass);

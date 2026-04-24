@@ -2,22 +2,20 @@
 include("connection.php");
 $con = connection();
 
-$id = $_POST['id'];
-$name = $_POST['name'];
-$lastname = $_POST['lastname'];
-$username = $_POST['username'];
-$password = $_POST['password'];
+$nombre     = $_POST['nombre'];
 $email = $_POST['email'];
+$telefono = $_POST['telefono'];
+$direccion = $_POST['direccion'];
 
 
-
-$sql = "INSERT INTO users (name, lastname, username, password, email) VALUES ('$name', '$lastname', '$username', '$password', '$email')";
+$sql = "INSERT INTO clientes (nombre, email, telefono, direccion) 
+VALUES ('$nombre', '$email', '$telefono', '$direccion')";
 $query = mysqli_query($con, $sql);
 
 if($query){
     Header("Location: index.php");
 }else{
-
+    echo "Error en SQL: " . mysqli_error($con);
 }
 
 ?>

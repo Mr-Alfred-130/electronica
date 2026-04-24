@@ -2,7 +2,7 @@
 include("connection.php");
 $con = connection();
 
-$sql = "SELECT * FROM users";
+$sql = "SELECT * FROM clientes";
 $query = mysqli_query($con, $sql);
 
 if(!$query){
@@ -63,173 +63,173 @@ if(!$query){
             </div>
             <style>
                 /* Paleta de Colores Formal */
-:root {
-    --primary: #2c3e50;      /* Azul medianoche (Seriedad) */
-    --accent: #3498db;       /* Azul brillante (Acción) */
-    --success: #27ae60;      /* Verde (Confirmación) */
-    --danger: #c0392b;       /* Rojo (Advertencia) */
-    --bg-body: #f4f7f6;      /* Gris muy claro (Fondo) */
-    --text-main: #333333;    /* Gris oscuro (Lectura) */
-    --border: #dcdde1;       /* Gris suave (Separadores) */
-}
+                :root {
+                    --primary: #2c3e50;      /* Azul medianoche (Seriedad) */
+                    --accent: #3498db;       /* Azul brillante (Acción) */
+                    --success: #27ae60;      /* Verde (Confirmación) */
+                    --danger: #c0392b;       /* Rojo (Advertencia) */
+                    --bg-body: #f4f7f6;      /* Gris muy claro (Fondo) */
+                    --text-main: #333333;    /* Gris oscuro (Lectura) */
+                    --border: #dcdde1;       /* Gris suave (Separadores) */
+                }
 
-/* Configuración General */
-body {
-    background-color: var(--bg-body);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: var(--text-main);
-    line-height: 1.6;
-}
+                /* Configuración General */
+                body {
+                    background-color: var(--bg-body);
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    color: var(--text-main);
+                    line-height: 1.6;
+                }
 
-.page-section {
-    padding: 40px 20px;
-    max-width: 1100px;
-    margin: 0 auto;
-}
+                .page-section {
+                    padding: 40px 20px;
+                    max-width: 1100px;
+                    margin: 0 auto;
+                }
 
-/* Contenedores Estilo Tarjeta (Cards) */
-.users-form, .users-table {
-    background: #ffffff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    margin-bottom: 40px;
-    border: 1px solid var(--border);
-}
+                /* Contenedores Estilo Tarjeta (Cards) */
+                .users-form, .users-table {
+                    background: #ffffff;
+                    padding: 30px;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+                    margin-bottom: 40px;
+                    border: 1px solid var(--border);
+                }
 
-/* Títulos */
-h1, h2 {
-    color: var(--primary);
-    margin-top: 0;
-    font-weight: 600;
-    border-bottom: 2px solid var(--accent);
-    padding-bottom: 10px;
-    margin-bottom: 25px;
-    font-size: 1.5rem;
-}
+                /* Títulos */
+                h1, h2 {
+                    color: var(--primary);
+                    margin-top: 0;
+                    font-weight: 600;
+                    border-bottom: 2px solid var(--accent);
+                    padding-bottom: 10px;
+                    margin-bottom: 25px;
+                    font-size: 1.5rem;
+                }
 
-/* Formulario en Cuadrícula (Layout) */
-form {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
+                /* Formulario en Cuadrícula (Layout) */
+                form {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                    gap: 20px;
+                }
 
-.form-group {
-    display: flex;
-    flex-direction: column;
-}
+                .form-group {
+                    display: flex;
+                    flex-direction: column;
+                }
 
-/* En el formulario, el botón de envío debe ocupar toda la fila */
-.form-group:last-child {
-    grid-column: 1 / -1;
-    margin-top: 10px;
-}
+                /* En el formulario, el botón de envío debe ocupar toda la fila */
+                .form-group:last-child {
+                    grid-column: 1 / -1;
+                    margin-top: 10px;
+                }
 
-/* Etiquetas e Inputs */
-label {
-    font-size: 0.85rem;
-    font-weight: 700;
-    margin-bottom: 8px;
-    color: var(--primary);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
+                /* Etiquetas e Inputs */
+                label {
+                    font-size: 0.85rem;
+                    font-weight: 700;
+                    margin-bottom: 8px;
+                    color: var(--primary);
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                }
 
-input[type="text"],
-input[type="password"],
-input[type="email"],
-input[type="number"] {
-    padding: 12px;
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-}
+                input[type="text"],
+                input[type="password"],
+                input[type="email"],
+                input[type="number"] {
+                    padding: 12px;
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                    font-size: 1rem;
+                    transition: all 0.3s ease;
+                }
 
-input:focus {
-    outline: none;
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
-}
+                input:focus {
+                    outline: none;
+                    border-color: var(--accent);
+                    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+                }
 
-/* Botones */
-.btn-submit {
-    background-color: var(--primary);
-    color: white;
-    padding: 14px;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.3s;
-}
+                /* Botones */
+                .btn-submit {
+                    background-color: var(--primary);
+                    color: white;
+                    padding: 14px;
+                    border: none;
+                    border-radius: 4px;
+                    font-size: 1rem;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: background 0.3s;
+                }
 
-.btn-submit:hover {
-    background-color: #1a252f;
-}
+                .btn-submit:hover {
+                    background-color: #1a252f;
+                }
 
-/* Tabla Formal */
-.users-table {
-    overflow-x: auto; /* Responsivo */
-}
+                /* Tabla Formal */
+                .users-table {
+                    overflow-x: auto; /* Responsivo */
+                }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-}
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    margin-top: 10px;
+                }
 
-thead th {
-    background-color: #f8f9fa;
-    color: var(--primary);
-    text-align: left;
-    padding: 15px;
-    font-size: 0.9rem;
-    border-bottom: 2px solid var(--border);
-}
+                thead th {
+                    background-color: #f8f9fa;
+                    color: var(--primary);
+                    text-align: left;
+                    padding: 15px;
+                    font-size: 0.9rem;
+                    border-bottom: 2px solid var(--border);
+                }
 
-tbody td {
-    padding: 12px 15px;
-    border-bottom: 1px solid #f1f2f6;
-    font-size: 0.95rem;
-}
+                tbody td {
+                    padding: 12px 15px;
+                    border-bottom: 1px solid #f1f2f6;
+                    font-size: 0.95rem;
+                }
 
-tbody tr:hover {
-    background-color: #fcfcfc;
-}
+                tbody tr:hover {
+                    background-color: #fcfcfc;
+                }
 
-/* Botones de Acción en la Tabla */
-.btn-edit, .btn-delete {
-    text-decoration: none;
-    padding: 6px 12px;
-    border-radius: 4px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    display: inline-block;
-    margin-right: 5px;
-}
+                /* Botones de Acción en la Tabla */
+                .btn-edit, .btn-delete {
+                    text-decoration: none;
+                    padding: 6px 12px;
+                    border-radius: 4px;
+                    font-size: 0.85rem;
+                    font-weight: 600;
+                    display: inline-block;
+                    margin-right: 5px;
+                }
 
-.btn-edit {
-    color: var(--accent);
-    border: 1px solid var(--accent);
-}
+                .btn-edit {
+                    color: var(--accent);
+                    border: 1px solid var(--accent);
+                }
 
-.btn-edit:hover {
-    background-color: var(--accent);
-    color: white;
-}
+                .btn-edit:hover {
+                    background-color: var(--accent);
+                    color: white;
+                }
 
-.btn-delete {
-    color: var(--danger);
-    border: 1px solid var(--danger);
-}
+                .btn-delete {
+                    color: var(--danger);
+                    border: 1px solid var(--danger);
+                }
 
-.btn-delete:hover {
-    background-color: var(--danger);
-    color: white;
-}
+                .btn-delete:hover {
+                    background-color: var(--danger);
+                    color: white;
+                }
             </style>
         </header>
         <!-- About-->
@@ -238,43 +238,38 @@ tbody tr:hover {
         <section class="page-section" id="services">
             
             <div class="users-form">
-        <h1>Campos</h1>
-        <form action="insert_user.php" method="POST">
-            <input type="text" name="id" placeholder="id">
-            <input type="text" name="name" placeholder="name">
-            <input type="text" name="lastname" placeholder="lastname">
-            <input type="text" name="username" placeholder="username">
-            <input type="text" name="password" placeholder="password">
-            <input type="text" name="email" placeholder="email">
-
-            <input type="submit" value="Registrar">
-        </form>
+        <h1>Registro de Clientes</h1>
+                <form action="insert_user.php" method="POST">
+                    <input type="text" name="nombre" placeholder="Nombre Completo">
+                    <input type="email" name="email" placeholder="Correo Electronico">
+                    <input type="text" name="telefono" placeholder="Telefono">
+                    <input type="text" name="direccion" placeholder="Dirección">
+                    <input type="submit" value="Registrar">
+                </form>
     </div>
 
     <div class="users-table">
-        <h2>Listado de Testers</h2>
+        <h2>Listado de Clientes</h2>
         <table>
             <thead>
                 <tr>
                     <th>id</th>
-                    <th>name</th>
-                    <th>lastname</th>
-                    <th>username</th>
-                    <th>password</th>
+                    <th>nombre</th>
                     <th>email</th>
+                    <th>telefono</th>
+                    <th>direccion</th>
                 </tr>
             </thead>
             <tbody>
                 <?php while ($row = mysqli_fetch_array($query)): ?>
                     <tr>
-                        <th><?= $row['id'] ?></th>
-                        <th><?= $row['name'] ?></th>
-                        <th><?= $row['lastname'] ?></th>
-                        <th><?= $row['username'] ?></th>
-                        <th><?= $row['password'] ?></th>
+                        <th><?= $row['id_cliente'] ?></th>
+                        <th><?= $row['nombre'] ?></th>
                         <th><?= $row['email'] ?></th>
-                        <th><a href="update.php?id=<?= $row['id'] ?>" class="users-table--edit">Editar</a></th>
-                        <th><a href="delete_user.php?id=<?= $row['id'] ?>" class="users-table--delete" >Eliminar</a></th>
+                        <th><?= $row['telefono'] ?></th>
+                        <th><?= $row['direccion'] ?></th>
+                        <th><a href="update.php?id=<?= $row['id_cliente'] ?>" class="users-table--edit">Editar</a></th>
+                        <th><a href="delete_user.php?id=<?= $row['id_cliente'] ?>" class="users-table--delete" >Eliminar</a></th>
                     </tr>
                 <?php endwhile; ?>
             </tbody>

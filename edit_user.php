@@ -2,14 +2,13 @@
 include("connection.php");
 $con = connection();
 
-$id = $_POST['id'];
-$name = $_POST['name'];
-$lastname = $_POST['lastname'];
-$username = $_POST['username'];
-$password = $_POST['password'];
+$id_cliente = $_POST['id_cliente'];
+$nombre = $_POST['nombre'];
 $email = $_POST['email'];
+$telefono = $_POST['telefono'];
+$direccion = $_POST['direccion'];
 
-$sql="UPDATE users SET id='$id', name='$name', lastname='$lastname', username='$username', password='$password', email='$email' WHERE id=$id";
+$sql="UPDATE clientes SET id_cliente='$id_cliente', nombre='$nombre', email='$email', telefono='$telefono', direccion='$direccion' WHERE id_cliente=$id_cliente";
 $query = mysqli_query($con, $sql);
 
 if($query){
@@ -19,4 +18,3 @@ if($query){
 }
 
 ?>
-

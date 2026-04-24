@@ -4,7 +4,7 @@
 
     $id=$_GET['id'];
 
-    $sql="SELECT * FROM users WHERE id='$id'";
+    $sql="SELECT * FROM clientes WHERE id_cliente='$id'";
     $query=mysqli_query($con, $sql);
 
     $row=mysqli_fetch_array($query);
@@ -156,14 +156,13 @@ a.eliminar:hover {
     <body>
         <div class="users-form">
             <form action="edit_user.php" method="POST">
-            <input type="text" name="id" placeholder="id">
-            <input type="text" name="name" placeholder="name">
-            <input type="text" name="lastname" placeholder="lastname">
-            <input type="text" name="username" placeholder="username">
-            <input type="text" name="password" placeholder="password">
-            <input type="text" name="email" placeholder="email">
+            <input type="text" name="id_cliente" placeholder="ID del Cliente">
+            <input type="text" name="nombre" placeholder="Nombre">
+            <input type="text" name="email" placeholder="Correo Electrónico">
+            <input type="text" name="telefono" placeholder="Teléfono">
+            <input type="text" name="direccion" placeholder="Dirección">
 
-            <input type="submit" value="Actualizar">
+            <input type="submit" value="Actualizar Datos">
         </form>
         </div>
     </body>

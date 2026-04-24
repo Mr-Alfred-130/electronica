@@ -240,7 +240,7 @@ if(!$query){
             <div class="users-form">
         <h1>Registro de Clientes</h1>
                 <form action="insert_user.php" method="POST">
-                    <inpuyt type="hidden" name="id_cliente" placeholder="id">
+                    <input type="text" name="id_cliente" placeholder="ID del Cliente">
                     <input type="text" name="nombre" placeholder="Nombre Completo">
                     <input type="email" name="email" placeholder="Correo Electronico">
                     <input type="text" name="telefono" placeholder="Telefono">

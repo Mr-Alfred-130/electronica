@@ -239,7 +239,7 @@ if(!$query){
             
             <div class="users-form">
                 <h1>Registro de Clientes</h1>
-                <form action="insert_user.php" method="POST">
+                <form action="insert_cliente.php" method="POST">
                     <input type="text" name="id_cliente" placeholder="ID del Cliente">
                     <input type="text" name="nombre" placeholder="Nombre Completo">
                     <input type="email" name="email" placeholder="Correo Electronico">
@@ -247,48 +247,67 @@ if(!$query){
                     <input type="text" name="direccion" placeholder="Dirección">
                     <input type="submit" value="Registrar">
                 </form>
-    </div>
+            </div>
 
-    <div class="users-table">
-        <h2>Listado de Clientes</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>id</th>
-                    <th>nombre</th>
-                    <th>email</th>
-                    <th>telefono</th>
-                    <th>direccion</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php while ($row = mysqli_fetch_array($query)): ?>
-                    <tr>
-                        <th><?= $row['id_cliente'] ?></th>
-                        <th><?= $row['nombre'] ?></th>
-                        <th><?= $row['email'] ?></th>
-                        <th><?= $row['telefono'] ?></th>
-                        <th><?= $row['direccion'] ?></th>
-                        <th><a href="update.php?id=<?= $row['id_cliente'] ?>" class="users-table--edit">Editar</a></th>
-                        <th><a href="delete_user.php?id=<?= $row['id_cliente'] ?>" class="users-table--delete" >Eliminar</a></th>
-                    </tr>
-                <?php endwhile; ?>
-            </tbody>
-        </table>
-    </div>
+            <div class="users-table">
+                <h2>Listado de Clientes</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>nombre</th>
+                            <th>email</th>
+                            <th>telefono</th>
+                            <th>direccion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php while ($row = mysqli_fetch_array($query)): ?>
+                            <tr>
+                                <th><?= $row['id_cliente'] ?></th>
+                                <th><?= $row['nombre'] ?></th>
+                                <th><?= $row['email'] ?></th>
+                                <th><?= $row['telefono'] ?></th>
+                                <th><?= $row['direccion'] ?></th>
+                                <th><a href="update.php?id=<?= $row['id_cliente'] ?>" class="users-table--edit">Editar</a></th>
+                                <th><a href="delete_user.php?id=<?= $row['id_cliente'] ?>" class="users-table--delete" >Eliminar</a></th>
+                            </tr>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>
+            </div>
+        </section>
         
 
-<script>
-function mostrarVideo() {
-    document.getElementById("videoContainer").style.display = "block";
-}
-</script>
+        <script>
+
+        function mostrarVideo() {
+            document.getElementById("videoContainer").style.display = "block";
+        }
+        </script>
         <section class="page-section bg-light" id="portfolio">
-    <div class="container px-4 px-lg-5">
-        <h2 class="text-center mt-0">Catálogo de Laptops</h2>
-        <hr class="divider" />
-        <div class="row gx-4 gy-4">
+            <div class="container px-4 px-lg-5">
+                <h2 class="text-center mt-0">Catálogo de Laptops</h2>
+                <hr class="divider" />
+                <div class="row gx-4 gy-4">
             
+                <div class="col-lg-3 col-md-6">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="p-3">
+                            <img class="card-img-top img-fluid" src="assets/img/portfolio/thumbnails/1.jpg" alt="Laptop HP" />
+                        </div>
+                        <div class="card-body p-3">
+                        
+                            <h6 class="card-title mb-2" style="font-size: 0.9rem;">Laptop HP 15-fc0077la AMD Ryzen 7 16GB RAM 512GB SSD</h6>
+                            <div class="d-flex align-items-center">
+                                <span class="h5 fw-bold mb-0">$ 12,347</span>
+                                <span class="badge bg-success ms-2">9% OFF</span>
+                            </div>
+                            <p class="text-success small mb-0">12 meses sin intereses de $ 1,028</p>
+                            
+                        </div>
+                    </div>
+                </div>
             <div class="col-lg-3 col-md-6">
                 <div class="card h-100 border-0 shadow-sm">
                     <div class="p-3">
@@ -306,210 +325,10 @@ function mostrarVideo() {
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="p-3">
-                        <img class="card-img-top img-fluid" src="assets/img/portfolio/thumbnails/1.jpg" alt="Laptop HP" />
-                    </div>
-                    <div class="card-body p-3">
-                       
-                        <h6 class="card-title mb-2" style="font-size: 0.9rem;">Laptop HP 15-fc0077la AMD Ryzen 7 16GB RAM 512GB SSD</h6>
-                        <div class="d-flex align-items-center">
-                            <span class="h5 fw-bold mb-0">$ 12,347</span>
-                            <span class="badge bg-success ms-2">9% OFF</span>
-                        </div>
-                        <p class="text-success small mb-0">12 meses sin intereses de $ 1,028</p>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="p-3">
-                        <img class="card-img-top img-fluid" src="assets/img/portfolio/thumbnails/1.jpg" alt="Laptop HP" />
-                    </div>
-                    <div class="card-body p-3">
-                       
-                        <h6 class="card-title mb-2" style="font-size: 0.9rem;">Laptop HP 15-fc0077la AMD Ryzen 7 16GB RAM 512GB SSD</h6>
-                        <div class="d-flex align-items-center">
-                            <span class="h5 fw-bold mb-0">$ 12,347</span>
-                            <span class="badge bg-success ms-2">9% OFF</span>
-                        </div>
-                        <p class="text-success small mb-0">12 meses sin intereses de $ 1,028</p>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="p-3">
-                        <img class="card-img-top img-fluid" src="assets/img/portfolio/thumbnails/1.jpg" alt="Laptop HP" />
-                    </div>
-                    <div class="card-body p-3">
-                       
-                        <h6 class="card-title mb-2" style="font-size: 0.9rem;">Laptop HP 15-fc0077la AMD Ryzen 7 16GB RAM 512GB SSD</h6>
-                        <div class="d-flex align-items-center">
-                            <span class="h5 fw-bold mb-0">$ 12,347</span>
-                            <span class="badge bg-success ms-2">9% OFF</span>
-                        </div>
-                        <p class="text-success small mb-0">12 meses sin intereses de $ 1,028</p>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="p-3">
-                        <img class="card-img-top img-fluid" src="assets/img/portfolio/thumbnails/1.jpg" alt="Laptop HP" />
-                    </div>
-                    <div class="card-body p-3">
-                       
-                        <h6 class="card-title mb-2" style="font-size: 0.9rem;">Laptop HP 15-fc0077la AMD Ryzen 7 16GB RAM 512GB SSD</h6>
-                        <div class="d-flex align-items-center">
-                            <span class="h5 fw-bold mb-0">$ 12,347</span>
-                            <span class="badge bg-success ms-2">9% OFF</span>
-                        </div>
-                        <p class="text-success small mb-0">12 meses sin intereses de $ 1,028</p>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="p-3">
-                        <img class="card-img-top img-fluid" src="assets/img/portfolio/thumbnails/1.jpg" alt="Laptop HP" />
-                    </div>
-                    <div class="card-body p-3">
-                       
-                        <h6 class="card-title mb-2" style="font-size: 0.9rem;">Laptop HP 15-fc0077la AMD Ryzen 7 16GB RAM 512GB SSD</h6>
-                        <div class="d-flex align-items-center">
-                            <span class="h5 fw-bold mb-0">$ 12,347</span>
-                            <span class="badge bg-success ms-2">9% OFF</span>
-                        </div>
-                        <p class="text-success small mb-0">12 meses sin intereses de $ 1,028</p>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="p-3">
-                        <img class="card-img-top img-fluid" src="assets/img/portfolio/thumbnails/1.jpg" alt="Laptop HP" />
-                    </div>
-                    <div class="card-body p-3">
-                       
-                        <h6 class="card-title mb-2" style="font-size: 0.9rem;">Laptop HP 15-fc0077la AMD Ryzen 7 16GB RAM 512GB SSD</h6>
-                        <div class="d-flex align-items-center">
-                            <span class="h5 fw-bold mb-0">$ 12,347</span>
-                            <span class="badge bg-success ms-2">9% OFF</span>
-                        </div>
-                        <p class="text-success small mb-0">12 meses sin intereses de $ 1,028</p>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="p-3">
-                        <img class="card-img-top img-fluid" src="assets/img/portfolio/thumbnails/1.jpg" alt="Laptop HP" />
-                    </div>
-                    <div class="card-body p-3">
-                       
-                        <h6 class="card-title mb-2" style="font-size: 0.9rem;">Laptop HP 15-fc0077la AMD Ryzen 7 16GB RAM 512GB SSD</h6>
-                        <div class="d-flex align-items-center">
-                            <span class="h5 fw-bold mb-0">$ 12,347</span>
-                            <span class="badge bg-success ms-2">9% OFF</span>
-                        </div>
-                        <p class="text-success small mb-0">12 meses sin intereses de $ 1,028</p>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="p-3">
-                        <img class="card-img-top img-fluid" src="assets/img/portfolio/thumbnails/1.jpg" alt="Laptop HP" />
-                    </div>
-                    <div class="card-body p-3">
-                       
-                        <h6 class="card-title mb-2" style="font-size: 0.9rem;">Laptop HP 15-fc0077la AMD Ryzen 7 16GB RAM 512GB SSD</h6>
-                        <div class="d-flex align-items-center">
-                            <span class="h5 fw-bold mb-0">$ 12,347</span>
-                            <span class="badge bg-success ms-2">9% OFF</span>
-                        </div>
-                        <p class="text-success small mb-0">12 meses sin intereses de $ 1,028</p>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="p-3">
-                        <img class="card-img-top img-fluid" src="assets/img/portfolio/thumbnails/1.jpg" alt="Laptop HP" />
-                    </div>
-                    <div class="card-body p-3">
-                       
-                        <h6 class="card-title mb-2" style="font-size: 0.9rem;">Laptop HP 15-fc0077la AMD Ryzen 7 16GB RAM 512GB SSD</h6>
-                        <div class="d-flex align-items-center">
-                            <span class="h5 fw-bold mb-0">$ 12,347</span>
-                            <span class="badge bg-success ms-2">9% OFF</span>
-                        </div>
-                        <p class="text-success small mb-0">12 meses sin intereses de $ 1,028</p>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="p-3">
-                        <img class="card-img-top img-fluid" src="assets/img/portfolio/thumbnails/1.jpg" alt="Laptop HP" />
-                    </div>
-                    <div class="card-body p-3">
-                       
-                        <h6 class="card-title mb-2" style="font-size: 0.9rem;">Laptop HP 15-fc0077la AMD Ryzen 7 16GB RAM 512GB SSD</h6>
-                        <div class="d-flex align-items-center">
-                            <span class="h5 fw-bold mb-0">$ 12,347</span>
-                            <span class="badge bg-success ms-2">9% OFF</span>
-                        </div>
-                        <p class="text-success small mb-0">12 meses sin intereses de $ 1,028</p>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="p-3">
-                        <img class="card-img-top img-fluid" src="assets/img/portfolio/thumbnails/1.jpg" alt="Laptop HP" />
-                    </div>
-                    <div class="card-body p-3">
-                       
-                        <h6 class="card-title mb-2" style="font-size: 0.9rem;">Laptop HP 15-fc0077la AMD Ryzen 7 16GB RAM 512GB SSD</h6>
-                        <div class="d-flex align-items-center">
-                            <span class="h5 fw-bold mb-0">$ 12,347</span>
-                            <span class="badge bg-success ms-2">9% OFF</span>
-                        </div>
-                        <p class="text-success small mb-0">12 meses sin intereses de $ 1,028</p>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="p-3">
-                        <img class="card-img-top img-fluid" src="assets/img/portfolio/thumbnails/1.jpg" alt="Laptop HP" />
-                    </div>
-                    <div class="card-body p-3">
-                       
-                        <h6 class="card-title mb-2" style="font-size: 0.9rem;">Laptop HP 15-fc0077la AMD Ryzen 7 16GB RAM 512GB SSD</h6>
-                        <div class="d-flex align-items-center">
-                            <span class="h5 fw-bold mb-0">$ 12,347</span>
-                            <span class="badge bg-success ms-2">9% OFF</span>
-                        </div>
-                        <p class="text-success small mb-0">12 meses sin intereses de $ 1,028</p>
-                        
-                    </div>
-                </div>
-            </div>
+            
+           
+           
+           
             <div class="col-lg-3 col-md-6">
                 <div class="card h-100 border-0 shadow-sm">
                     <div class="p-3">

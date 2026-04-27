@@ -5,6 +5,9 @@ $con = connection();
 $sql = "SELECT * FROM clientes";
 $query = mysqli_query($con, $sql);
 
+$sql2 = "SELECT * FROM usuarios";
+$query2 = mysqli_query($con, $sql2);
+
 if(!$query){
     die("Error en la consulta: " . mysqli_error($con));
 }
@@ -62,6 +65,7 @@ if(!$query){
                 </div>
             </div>
             <style>
+                
                 /* Paleta de Colores Formal */
                 :root {
                     --primary: #2c3e50;      /* Azul medianoche (Seriedad) */
@@ -269,16 +273,53 @@ if(!$query){
                                 <th><?= $row['email'] ?></th>
                                 <th><?= $row['telefono'] ?></th>
                                 <th><?= $row['direccion'] ?></th>
-                                <th><a href="update.php?id=<?= $row['id_cliente'] ?>" class="users-table--edit">Editar</a></th>
-                                <th><a href="delete_user.php?id=<?= $row['id_cliente'] ?>" class="users-table--delete" >Eliminar</a></th>
+                                <th><a href="update_cliente.php?id=<?= $row['id_cliente'] ?>" class="users-table--edit">Editar</a></th>
+                                <th><a href="delete_cliente.php?id=<?= $row['id_cliente'] ?>" class="users-table--delete" >Eliminar</a></th>
                             </tr>
                         <?php endwhile; ?>
                     </tbody>
                 </table>
             </div>
         </section>
-        
+            
+        <section class="page-section" id="user">
+            <div class="users-form">
+                <h1>Registro de Usuarios</h1>
+                <form action="insert_usuario.php" method="POST">
+                    <input type="text" name="id_usuario" placeholder="ID del Usuario">
+                    <input type="text" name="nombre" placeholder="Nombre Completo">
+                    <input type="password" name="contrasena" placeholder="Contraseña">
+                    <input type="text" name="rol" placeholder="Rol">
+                    <input type="submit" value="Registrar">
+                </form>
+            </div>
 
+            <div class="users-table">
+                <h2>Listado de Usuarios</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>nombre</th>
+                            <th>contrasena</th>
+                            <th>rol</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php while ($row = mysqli_fetch_array($query2)): ?>
+                            <tr>
+                                <th><?= $row['id_usuario'] ?></th>
+                                <th><?= $row['nombre'] ?></th>
+                                <th><?= $row['contrasena'] ?></th>
+                                <th><?= $row['rol'] ?></th>
+                                <th><a href="update_usuario.php?id=<?= $row['id_usuario'] ?>" class="users-table--edit">Editar</a></th>
+                                <th><a href="delete_usuario.php?id=<?= $row['id_usuario'] ?>" class="users-table--delete" >Eliminar</a></th>
+                            </tr>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>
+            </div>
+        </section>
         <script>
 
         function mostrarVideo() {

@@ -6,7 +6,13 @@ $sql = "SELECT * FROM clientes";
 $query = mysqli_query($con, $sql);
 
 $sql2 = "SELECT * FROM usuarios";
-$query2 = mysqli_query($con, $sql2);
+$query2 = mysqli_query($con, $sql2); 
+
+$sql3 = "SELECT * FROM productos";
+$query3 = mysqli_query($con, $sql3);
+
+$sql4 = "SELECT * FROM categorias";
+$query4 = mysqli_query($con, $sql4);
 
 if(!$query){
     die("Error en la consulta: " . mysqli_error($con));
@@ -41,10 +47,11 @@ if(!$query){
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto my-2 my-lg-0">
-                        <li class="nav-item"><a class="nav-link" link href="https://www.youtube.com/shorts/TPgfu_Hj0Cc"target="_blank">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#services">Campos</a></li>
-                        <li class="nav-item"><a class="nav-link" link href="https://www.youtube.com/shorts/mK5O2aiGfjY" target="_blank">Portfolio</a></li>
-                        <li class="nav-item"><a class="nav-link" link href="https://www.youtube.com/shorts/aOFPsqvKHPQ"target="_blank">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#clientes">Clientes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#user">Usuarios</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#categoria">Categorías</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#producto">Productos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#catalogo">Catálogo</a></li>
                     </ul>
                 </div>
             </div>
@@ -239,7 +246,7 @@ if(!$query){
         <!-- About-->
         
         <!-- Services-->
-        <section class="page-section" id="services">
+        <section class="page-section" id="clientes">
             
             <div class="users-form">
                 <h1>Registro de Clientes</h1>
@@ -320,13 +327,91 @@ if(!$query){
                 </table>
             </div>
         </section>
+
+        <section class="page-section" id="producto">
+            <div class="users-form">
+                <h1>Registro de Productos</h1>
+                <form action="insert_producto.php" method="POST">
+                    <input type="text" name="id_producto" placeholder="ID del Producto">
+                    <input type="text" name="nombre" placeholder="Nombre del producto">
+                    <input type="text" name="descripcion" placeholder="Descripción">
+                    <input type="text" name="precio" placeholder="Precio">
+                    <input type="text" name="stock" placeholder="Stock">
+                    <input type="text" name="id_categoria" placeholder="ID de la Categoría">
+                    <input type="submit" value="Registrar">
+                </form>
+            </div>
+
+            <div class="users-table">
+                <h2>Listado de Productos</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>id_producto</th>
+                            <th>nombre</th>
+                            <th>descripcion</th>
+                            <th>precio</th>
+                            <th>stock</th>
+                            <th>id_categoria</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php while ($row = mysqli_fetch_array($query3)): ?>
+                            <tr>
+                                <th><?= $row['id_producto'] ?></th>
+                                <th><?= $row['nombre'] ?></th>
+                                <th><?= $row['descripcion'] ?></th>
+                                <th><?= $row['precio'] ?></th>
+                                <th><?= $row['stock'] ?></th>
+                                <th><?= $row['id_categoria'] ?></th>
+                                <th><a href="update_producto.php?id=<?= $row['id_producto'] ?>" class="users-table--edit">Editar</a></th>
+                                <th><a href="delete_producto.php?id=<?= $row['id_producto'] ?>" class="users-table--delete" >Eliminar</a></th>
+                            </tr>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="page-section" id="categoria">
+            <div class="users-form">
+                <h1>Registro de Categorías</h1>
+                <form action="insert_categoria.php" method="POST">
+                    <input type="text" name="id_categoria" placeholder="ID de la Categoría">
+                    <input type="text" name="nombre_categoria" placeholder="Nombre de la Categoría">
+                    <input type="submit" value="Registrar">
+                </form>
+            </div>
+
+            <div class="users-table">
+                <h2>Listado de Categorías</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>id_categoria</th>
+                            <th>nombre_categoria</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php while ($row = mysqli_fetch_array($query4)): ?>
+                            <tr>
+                                <th><?= $row['id_categoria'] ?></th>
+                                <th><?= $row['nombre_categoria'] ?></th>
+                                <th><a href="update_categoria.php?id=<?= $row['id_categoria'] ?>" class="users-table--edit">Editar</a></th>
+                                <th><a href="delete_categoria.php?id=<?= $row['id_categoria'] ?>" class="users-table--delete" >Eliminar</a></th>
+                            </tr>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>
+            </div>
+        </section>
         <script>
 
         function mostrarVideo() {
             document.getElementById("videoContainer").style.display = "block";
         }
         </script>
-        <section class="page-section bg-light" id="portfolio">
+        <section class="page-section bg-light" id="catalogo">
             <div class="container px-4 px-lg-5">
                 <h2 class="text-center mt-0">Catálogo de Laptops</h2>
                 <hr class="divider" />
@@ -352,16 +437,16 @@ if(!$query){
             <div class="col-lg-3 col-md-6">
                 <div class="card h-100 border-0 shadow-sm">
                     <div class="p-3">
-                        <img class="card-img-top img-fluid" src="assets/img/portfolio/thumbnails/1.jpg" alt="Laptop HP" />
+                        <img class="card-img-top img-fluid" src="assets/img/portfolio/thumbnails/2.jpg" alt="Laptop Lenovo" />
                     </div>
                     <div class="card-body p-3">
                        
-                        <h6 class="card-title mb-2" style="font-size: 0.9rem;">Laptop HP 15-fc0077la AMD Ryzen 7 16GB RAM 512GB SSD</h6>
+                        <h6 class="card-title mb-2" style="font-size: 0.9rem;">Laptop Gamer LENOVO LOQ NVIDIA GeForce RTX 3050 AMD Ryzen 5 7235HS 16GB DDR5 512GB SSD 15.6" Full HD 144Hz W11 Teclado Español Mouse Gaming Estable</h6>
                         <div class="d-flex align-items-center">
-                            <span class="h5 fw-bold mb-0">$ 12,347</span>
-                            <span class="badge bg-success ms-2">9% OFF</span>
+                            <span class="h5 fw-bold mb-0">$ 15,369</span>
+                            <span class="badge bg-success ms-2">33% OFF</span>
                         </div>
-                        <p class="text-success small mb-0">12 meses sin intereses de $ 1,028</p>
+                        <p class="text-success small mb-0">3 meses sin intereses de $ 5,123</p>
                         
                     </div>
                 </div>
@@ -373,16 +458,16 @@ if(!$query){
             <div class="col-lg-3 col-md-6">
                 <div class="card h-100 border-0 shadow-sm">
                     <div class="p-3">
-                        <img class="card-img-top img-fluid" src="assets/img/portfolio/thumbnails/1.jpg" alt="Laptop HP" />
+                        <img class="card-img-top img-fluid" src="assets/img/portfolio/thumbnails/3.jpg" alt="Laptop Lenovo" />
                     </div>
                     <div class="card-body p-3">
                        
-                        <h6 class="card-title mb-2" style="font-size: 0.9rem;">Laptop HP 15-fc0077la AMD Ryzen 7 16GB RAM 512GB SSD</h6>
+                        <h6 class="card-title mb-2" style="font-size: 0.9rem;">Laptop Lenovo 15.3 Ideapad Slim 3 15ARP10 16GB RAM SSD 1TB</h6>
                         <div class="d-flex align-items-center">
-                            <span class="h5 fw-bold mb-0">$ 12,347</span>
+                            <span class="h5 fw-bold mb-0">$ 18,499</span>
                             <span class="badge bg-success ms-2">9% OFF</span>
                         </div>
-                        <p class="text-success small mb-0">12 meses sin intereses de $ 1,028</p>
+                        <p class="text-success small mb-0">12 meses sin intereses de $ 1,541</p>
                         
                     </div>
                 </div>
@@ -390,16 +475,15 @@ if(!$query){
             <div class="col-lg-3 col-md-6">
                 <div class="card h-100 border-0 shadow-sm">
                     <div class="p-3">
-                        <img class="card-img-top img-fluid" src="assets/img/portfolio/thumbnails/1.jpg" alt="Laptop HP" />
+                        <img class="card-img-top img-fluid" src="assets/img/portfolio/thumbnails/4.jpg" alt="Laptop Asus" />
                     </div>
                     <div class="card-body p-3">
                        
-                        <h6 class="card-title mb-2" style="font-size: 0.9rem;">Laptop HP 15-fc0077la AMD Ryzen 7 16GB RAM 512GB SSD</h6>
+                        <h6 class="card-title mb-2" style="font-size: 0.9rem;">Notebook Asus Tuf A16 16 Fhd 512gb / 16gb Ram Ryzen 7-7445hs Rtx4050 - Mecha Gray</h6>
                         <div class="d-flex align-items-center">
-                            <span class="h5 fw-bold mb-0">$ 12,347</span>
-                            <span class="badge bg-success ms-2">9% OFF</span>
+                            <span class="h5 fw-bold mb-0">$ 23,500</span>
                         </div>
-                        <p class="text-success small mb-0">12 meses sin intereses de $ 1,028</p>
+                        <p class="text-success small mb-0">12 meses sin intereses de $ 1,958</p>
                         
                     </div>
                 </div>
@@ -407,16 +491,16 @@ if(!$query){
             <div class="col-lg-3 col-md-6">
                 <div class="card h-100 border-0 shadow-sm">
                     <div class="p-3">
-                        <img class="card-img-top img-fluid" src="assets/img/portfolio/thumbnails/1.jpg" alt="Laptop HP" />
+                        <img class="card-img-top img-fluid" src="assets/img/portfolio/thumbnails/5.jpg" alt="Laptop Lenovo" />
                     </div>
                     <div class="card-body p-3">
                        
-                        <h6 class="card-title mb-2" style="font-size: 0.9rem;">Laptop HP 15-fc0077la AMD Ryzen 7 16GB RAM 512GB SSD</h6>
+                        <h6 class="card-title mb-2" style="font-size: 0.9rem;">Notebook Lenovo LOQ con Intel Core i5 y RTX 5050, 16 GB de RAM y 512 GB SSD</h6>
                         <div class="d-flex align-items-center">
-                            <span class="h5 fw-bold mb-0">$ 12,347</span>
-                            <span class="badge bg-success ms-2">9% OFF</span>
+                            <span class="h5 fw-bold mb-0">$ 18,999</span>
+                            <span class="badge bg-success ms-2">36% OFF</span>
                         </div>
-                        <p class="text-success small mb-0">12 meses sin intereses de $ 1,028</p>
+                        <p class="text-success small mb-0">12 meses sin intereses de $ 1,583</p>
                         
                     </div>
                 </div>
@@ -427,16 +511,16 @@ if(!$query){
                 <div class="card h-100 border-0 shadow-sm">
                     <span class="badge bg-primary position-absolute m-2" style="z-index: 1;">OFERTA IMPERDIBLE</span>
                     <div class="p-3">
-                        <img class="card-img-top img-fluid" src="assets/img/portfolio/thumbnails/2.jpg" alt="Laptop Acer" />
+                        <img class="card-img-top img-fluid" src="assets/img/portfolio/thumbnails/6.jpg" alt="Laptop Acer" />
                     </div>
                     <div class="card-body p-3">
                         
-                        <h6 class="card-title mb-2" style="font-size: 0.9rem;">Laptop Acer Nitro V15 Core i5- 210h 16 Ram 512 Ssd Nvidia RTX 4050</h6>
+                        <h6 class="card-title mb-2" style="font-size: 0.9rem;">Laptop Gamer Nitro V 15.6 Intel Core I5 16gb 512gb Rtx4050</h6>
                         <div class="d-flex align-items-center">
-                            <span class="h5 fw-bold mb-0">$ 15,079</span>
-                            <span class="badge bg-success ms-2">24% OFF</span>
+                            <span class="h5 fw-bold mb-0">$ 16,499</span>
+                            <span class="badge bg-success ms-2">28% OFF</span>
                         </div>
-                        <p class="text-muted small mb-0">24 meses de $ 911.21</p>
+                        <p class="text-muted small mb-0">12 meses sin intereses de $ 1,374</p>
                         <p class="text-success small mt-1">Envío gratis</p>
                     </div>
                 </div>
@@ -445,15 +529,16 @@ if(!$query){
             <div class="col-lg-3 col-md-6">
                 <div class="card h-100 border-0 shadow-sm">
                     <div class="p-3">
-                        <img class="card-img-top img-fluid" src="assets/img/portfolio/thumbnails/3.jpg" alt="Asus TUF" />
+                        <img class="card-img-top img-fluid" src="assets/img/portfolio/thumbnails/7.jpg" alt="Laptop Chuwi" />
                     </div>
                     <div class="card-body p-3">
                         
-                        <h6 class="card-title mb-2" style="font-size: 0.9rem;">Asus Tuf Gaming Ryzen 7/geforce Rtxtm 4050/16gb/ 512ssd</h6>
+                        <h6 class="card-title mb-2" style="font-size: 0.9rem;">Laptop Chuwi Corebook 16gb 512gb Ssd Intel I9 13900hk</h6>
                         <div class="d-flex align-items-center">
-                            <span class="h5 fw-bold mb-0">$ 27,999</span>
+                            <span class="h5 fw-bold mb-0">$ 11,069</span>
+                            <span class="badge bg-success ms-2">33% OFF</span>
                         </div>
-                        <p class="text-muted small mb-0">24 meses de $ 1,691</p>
+                        <p class="text-muted small mb-0">12 meses sin intereses de $ 922</p>
                         <p class="text-success small mt-1">Envío gratis</p>
                     </div>
                 </div>
@@ -462,16 +547,15 @@ if(!$query){
             <div class="col-lg-3 col-md-6">
                 <div class="card h-100 border-0 shadow-sm">
                     <div class="p-3">
-                        <img class="card-img-top img-fluid" src="assets/img/portfolio/thumbnails/4.jpg" alt="Asus Pro" />
+                        <img class="card-img-top img-fluid" src="assets/img/portfolio/thumbnails/8.jpg" alt="Machenike L16air" />
                     </div>
                     <div class="card-body p-3">
-                        <h6 class="card-title mb-2" style="font-size: 0.9rem;">Laptop Asus Tuf A16 Rtx 5070 Ryzen 9 270 32 Gb Ram 1tb</h6>
+                        <h6 class="card-title mb-2" style="font-size: 0.9rem;">Machenike L16air I7 Español Teclado Portátil 16 Gb 512 Gb 120 Hz 2560 Px X 1600 Px Intel® Uhd Graphics Intel Core I7 13620h Windows 11 Pro Laptop</h6>
                         <div class="d-flex align-items-center">
-                            <span class="h5 fw-bold mb-0">$ 46,500</span>
+                            <span class="h5 fw-bold mb-0">$ 14,333</span>
                         </div>
-                        <p class="text-muted small mb-0">24 meses de $ 2,809</p>
-                        <p class="text-success small mt-1">Envío gratis</p>
-                        <p class="text-secondary x-small mt-1" style="font-size: 0.75rem;">Reacondicionado</p>
+                        <p class="text-muted small mb-0">12 meses sin intereses de $ 1,194</p>
+                        
                     </div>
                 </div>
             </div>
@@ -481,7 +565,7 @@ if(!$query){
 </section>
         <!-- Footer-->
         <footer class="bg-light py-5">
-            <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2023 - Company Name</div></div>
+            <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 3666 - Trujis Electric Pro Master</div></div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
